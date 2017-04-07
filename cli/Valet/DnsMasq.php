@@ -23,7 +23,7 @@ class DnsMasq
         $this->sm = $sm;
         $this->cli = $cli;
         $this->files = $files;
-        $this->configPath = '/etc/NetworkManager/dnsmasq.d/valet';
+        $this->configPath = '/etc/dnsmasq.d/valet';
         $this->nmConfigPath = '/etc/NetworkManager/NetworkManager.conf';
     }
 
