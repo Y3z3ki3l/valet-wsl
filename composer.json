@@ -1,5 +1,5 @@
 {
-    "name": "valeryan/valet-wsl",
+    "name": "crys/valet-wsl",
     "description": "A more enjoyable local development experience for Windows Subsystem for Linux.",
     "keywords": ["laravel", "valet", "wsl", "windows subsystem for linux", "ubuntu"],
     "license": "MIT",
@@ -23,6 +23,10 @@
         {
             "name": "Samuel Hilson",
             "email": "samrhilson@gmail.com"
+        },
+        {
+            "name": "Kristof Bach",
+            "email": "crys@crys.hu"
         }
     ],
     "autoload": {
