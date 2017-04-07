@@ -1,5 +1,6 @@
 <?php
 
+header('Server: valet/2.0.11');
 /**
  * Define the user's "~/.valet" path.
  */

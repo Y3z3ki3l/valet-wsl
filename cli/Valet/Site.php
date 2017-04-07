@@ -54,7 +54,7 @@ class Site
 
         $this->config->prependPath($linkPath);
 
-        $this->files->symlinkAsUser($target, $linkPath . '/' . $link);
+        $this->files->symlink($target, $linkPath . '/' . $link);
 
         return $linkPath . '/' . $link;
     }
@@ -187,7 +187,7 @@ class Site
 
         $this->createCertificate($url);
 
-        $this->files->putAsUser(
+        $this->files->put(
             VALET_HOME_PATH . '/Nginx/' . $url, $this->buildSecureNginxServer($url)
         );
     }
@@ -207,7 +207,7 @@ class Site
         $this->createPrivateKey($keyPath);
         $this->createSigningRequest($url, $keyPath, $csrPath);
 
-        $this->cli->runAsUser(sprintf(
+        $this->cli->run(sprintf(
             'openssl x509 -req -days 365 -in %s -signkey %s -out %s', $csrPath, $keyPath, $crtPath
         ));
 
@@ -222,7 +222,7 @@ class Site
      */
     function createPrivateKey($keyPath)
     {
-        $this->cli->runAsUser(sprintf('openssl genrsa -out %s 2048', $keyPath));
+        $this->cli->run(sprintf('openssl genrsa -out %s 2048', $keyPath));
     }
 
     /**
@@ -233,7 +233,7 @@ class Site
      */
     function createSigningRequest($url, $keyPath, $csrPath)
     {
-        $this->cli->runAsUser(sprintf(
+        $this->cli->run(sprintf(
             'openssl req -new -subj "/C=/ST=/O=/localityName=/commonName=%s/organizationalUnitName=/emailAddress=/" -key %s -out %s -passin pass:',
             $url, $keyPath, $csrPath
         ));
